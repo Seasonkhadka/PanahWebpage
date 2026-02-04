@@ -1,0 +1,9 @@
+{
+  "name": "panah-webpage",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Panah Adhikari - Actress & Writer (HTML, CSS, JS)",
+  "scripts": {
+    "serve": "npx serve ."
+  }
+}
