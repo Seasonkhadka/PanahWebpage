@@ -24,6 +24,7 @@ const translations = {
         achievement: {
             faan: { title: 'Former Secretary', desc: 'Contributed to policy development and growth of Nepalese cinema' },
             director: { title: 'Director', desc: 'Led creative direction and television content production' },
+            director_writer: { title: 'Director & writer', desc: 'Led creative direction and television content production' },
             women: { title: 'women development Member', desc: 'Supported strategic planning and national film promotion' }
         },
         quote: { text: "Every character I portray and every story I write is a piece of humanity I'm honored to share with the world", author: '— Panah Adhikari' },
@@ -39,8 +40,8 @@ const translations = {
             subtitle: 'Current work in production',
             badge: 'Teleserial',
             role: 'Writer & Director',
-            desc: "A gripping teleserial about humanity's final mission to save Earth. Playing Captain Maya, a determined astronaut who leads her crew through unimaginable challenges in deep space. This groundbreaking film explores themes of sacrifice, hope, and the indomitable human spirit.",
-            status: 'Production 2026'
+            desc: "Genre: It is a Nepali tele-serial. Availability: Episodes have been shared on YouTube and Facebook. The serial is part of a trend of, or similar to, sentimental or social drama series",
+            status: 'Production ongoing'
         },
         contact: {
             title: "Let's Connect",
