@@ -74,6 +74,57 @@ nav .menu a:hover {
     color: #9333ea;
 }
 
+/* Language switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.35rem 0.6rem;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.lang-btn:hover {
+    color: white;
+}
+
+.lang-btn.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+nav.scrolled .lang-btn {
+    color: #6b7280;
+}
+
+nav.scrolled .lang-btn:hover {
+    color: #1f2937;
+}
+
+nav.scrolled .lang-btn.active {
+    color: #581c87;
+    background: #ede9fe;
+}
+
+.lang-divider {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+nav.scrolled .lang-divider {
+    color: #9ca3af;
+}
+
 .menu-toggle {
     display: none;
     background: none;
@@ -160,6 +211,7 @@ nav.scrolled .menu-toggle {
     margin-bottom: 1.5rem;
     opacity: 0.95;
     letter-spacing: 0.02em;
+    display: none; /* shown by JS when language is Nepali */
 }
 
 .hero-content p {
@@ -740,6 +792,18 @@ section {
     display: flex;
     align-items: center;
     gap: 1.25rem;
+    min-width: 0;
+}
+
+.contact-card-inner > div:last-child {
+    min-width: 0;
+    flex: 1;
+}
+
+.contact-value {
+    font-size: 1.25rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .contact-icon {
@@ -764,10 +828,6 @@ section {
     font-size: 1.125rem;
     opacity: 0.7;
     margin-bottom: 0.25rem;
-}
-
-.contact-value {
-    font-size: 1.25rem;
 }
 
 .social-title {
@@ -842,27 +902,473 @@ footer p {
     }
 }
 
-/* Responsive */
+/* ========== Responsive: Tablet & Mobile ========== */
 @media (max-width: 768px) {
+    /* Navigation */
+    nav {
+        padding: 0.75rem 0;
+    }
+
+    nav .container {
+        padding: 0 1rem;
+    }
+
     nav .menu {
         display: none;
+    }
+
+    nav .logo {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .lang-switcher {
+        margin-right: 0.5rem;
+    }
+
+    .lang-btn {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.5rem;
     }
 
     .menu-toggle {
         display: block;
     }
 
-    .hero-buttons {
-        flex-direction: column;
+    .mobile-menu ul {
+        padding: 0.75rem 1rem;
     }
 
-    .portfolio-grid,
+    /* Hero: single column, left-aligned, smaller type */
+    #home {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        text-align: center;
+        padding: 1.5rem 0;
+        max-width: 100%;
+    }
+
+    .hero-content h1.hero-name-en {
+        font-size: clamp(2.25rem, 10vw, 3.5rem);
+        line-height: 1.2;
+    }
+
+    .hero-name-ne {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        max-width: 100%;
+        margin: 0 auto 2rem;
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    /* Sections: less padding, multi-column grids to shorten page */
+    section {
+        padding: 2.5rem 1rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    /* Stats: 2x2 or 4 in a row – compact */
+    .stats-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
+
+    .stat-icon {
+        font-size: 1.35rem;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+    }
+
+    /* Portfolio: 2 columns, smaller featured image */
+    .featured-image {
+        height: 38vh;
+        margin-bottom: 1.5rem;
+    }
+
+    .featured-overlay {
+        padding: 1rem;
+    }
+
+    .featured-overlay h3 {
+        font-size: 1.25rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .portfolio-item {
+        height: 200px;
+    }
+
+    .portfolio-overlay {
+        padding: 0.75rem;
+    }
+
+    .portfolio-overlay h3 {
+        font-size: 1rem;
+    }
+
+    .portfolio-overlay p {
+        font-size: 0.8rem;
+    }
+
+    /* Achievements: 2 columns */
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .achievement-card {
+        padding: 1rem;
+    }
+
+    .achievement-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .achievement-card h3 {
+        font-size: 1rem;
+    }
+
+    .achievement-card p,
+    .achievement-card small {
+        font-size: 0.8rem;
+    }
+
+    /* Quote: tighter */
+    .quote-section {
+        padding: 2rem 1rem;
+    }
+
+    .quote-mark {
+        font-size: 2rem;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .quote-author {
+        font-size: 0.9rem;
+    }
+
+    /* Videos: 2 columns */
+    .video-subsection-title {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .video-subsection-title:first-of-type {
+        margin-top: 0;
+    }
+
     .videos-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .video-content {
+        padding: 1rem;
+    }
+
+    .video-content h3 {
+        font-size: 1rem;
+    }
+
+    .video-content p {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .video-category {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.6rem;
+    }
+
+    .play-button {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+
+    /* Projects: compact */
+    .project-card {
+        padding: 1.25rem;
+        margin-bottom: 1rem;
     }
 
     .project-header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .project-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .project-role,
+    .project-desc {
+        font-size: 0.9rem;
+    }
+
+    .project-desc {
+        margin-bottom: 1rem;
+    }
+
+    /* Contact: 1 column so Email & Management are fully visible, no overflow */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-card {
+        padding: 1.25rem;
+    }
+
+    .contact-card-inner {
+        gap: 1rem;
+    }
+
+    .contact-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.35rem;
+        flex-shrink: 0;
+    }
+
+    .contact-label {
+        font-size: 0.9rem;
+    }
+
+    .contact-value {
+        font-size: 1.05rem;
+        word-break: break-word;
+    }
+
+    .social-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 1rem;
+    }
+
+    footer .logo {
+        font-size: 1.25rem;
+    }
+
+    footer p {
+        font-size: 0.875rem;
+    }
+}
+
+/* ========== Responsive: Small phones (keep 2 columns, tighter) ========== */
+@media (max-width: 480px) {
+    nav .logo {
+        font-size: 1rem;
+    }
+
+    #home {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-content h1.hero-name-en {
+        font-size: 2rem;
+    }
+
+    .hero-name-ne {
+        font-size: 1rem;
+    }
+
+    .hero-badge {
+        padding: 0.4rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    section {
+        padding: 2rem 0.75rem;
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .section-title {
+        font-size: 1.35rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Keep 2 columns, smaller cells */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-icon {
+        font-size: 1.15rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .featured-image {
+        height: 32vh;
+        margin-bottom: 1rem;
+    }
+
+    .portfolio-grid {
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .portfolio-item {
+        height: 160px;
+    }
+
+    .achievements-grid {
+        gap: 0.75rem;
+    }
+
+    .achievement-card {
+        padding: 0.75rem;
+    }
+
+    .achievement-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .achievement-card p,
+    .achievement-card small {
+        font-size: 0.7rem;
+    }
+
+    .videos-grid {
+        gap: 0.75rem;
+    }
+
+    .video-content h3 {
+        font-size: 0.9rem;
+    }
+
+    .video-content p {
+        font-size: 0.75rem;
+    }
+
+    .video-subsection-title {
+        font-size: 1.1rem;
+    }
+
+    .project-card {
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .project-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-role,
+    .project-desc {
+        font-size: 0.85rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .contact-card {
+        padding: 1rem;
+    }
+
+    .contact-value {
+        font-size: 1rem;
+        word-break: break-word;
+    }
+
+    .btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9375rem;
     }
 }
